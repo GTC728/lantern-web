@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/lantern-web/favicon.svg" />
+    <link rel="apple-touch-icon" href="/lantern-web/icons/icon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="BoarD&Dice" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Cinzel:wght@400;600;700&family=EB+Garamond:wght@400;600;700&family=MedievalSharp&family=Uncial+Antiqua&display=swap"
+      rel="stylesheet"
+    />
+    <title>BoarD&amp;Dice</title>
+    <script>
+      try {
+        var prefs = JSON.parse(localStorage.getItem("board-dice.prefs.v1") || localStorage.getItem("lantern.prefs.v1") || "{}");
+        var theme = prefs.theme === "lantern" ? "board" : prefs.theme;
+        var allowed = ["board", "parchment", "grove", "midnight", "ember", "slate", "contrast"];
+        document.documentElement.dataset.theme = allowed.indexOf(theme) >= 0 ? theme : "board";
+        var fontStacks = {
+          segoe: '"Segoe UI", "Segoe UI Variable", system-ui, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif',
+          yahei: '"Microsoft YaHei", "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif',
+          pingfang: '"PingFang TC", "PingFang SC", "Helvetica Neue", "Microsoft JhengHei", sans-serif',
+          georgia: 'Georgia, "Times New Roman", "Songti TC", "Noto Serif TC", serif',
+          consolas: 'Consolas, "Cascadia Mono", "SF Mono", Menlo, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif',
+          cinzel: '"Cinzel", "Palatino Linotype", "Songti TC", "Noto Serif TC", serif',
+          medieval: '"MedievalSharp", "Bradley Hand", "KaiTi", cursive',
+          almendra: '"Almendra", Georgia, "Songti TC", "Noto Serif TC", serif',
+          uncial: '"Uncial Antiqua", "Cinzel", "Songti TC", "Noto Serif TC", serif',
+          garamond: '"EB Garamond", "Iowan Old Style", "Songti TC", "Noto Serif TC", serif'
+        };
+        var font = prefs.font || "garamond";
+        if (font && fontStacks[font]) {
+          document.documentElement.dataset.font = font;
+          document.documentElement.style.setProperty("--sans", fontStacks[font]);
+          document.documentElement.style.setProperty("--serif", fontStacks[font]);
+        }
+      } catch (e) {
+        document.documentElement.dataset.theme = "board";
+      }
+    </script>
+    <script type="module" crossorigin src="/lantern-web/assets/index-C9paHAaO.js"></script>
+    <link rel="modulepreload" crossorigin href="/lantern-web/assets/client-D60UBioJ.js">
+    <link rel="stylesheet" crossorigin href="/lantern-web/assets/index-DIts3oHT.css">
+  <link rel="manifest" href="/lantern-web/manifest.webmanifest"></head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
